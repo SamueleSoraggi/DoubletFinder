@@ -1,5 +1,8 @@
-doubletFinder_v3 <- function(seu, PCs, pN = 0.25, pK, nExp, reuse.pANN = FALSE, sct = FALSE, annotations = NULL) {
-  require(Seurat); require(fields); require(KernSmooth)
+doubletFinder_v3 <- function(seu, PCs, pN = 0.25, pK, nExp, reuse.pANN = FALSE, sct = FALSE, annotations = NULL, workers=2, future.globals.maxSize = 1 * 1024^3) {
+  require(Seurat); require(fields); require(KernSmooth); require(future); require(parallel);
+  
+  plan("multicore", workers = workers)
+  options(future.globals.maxSize = future.globals.maxSize)
 
   ## Generate new list of doublet classificatons from existing pANN vector to save time
   if (reuse.pANN != FALSE ) {
