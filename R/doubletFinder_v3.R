@@ -1,4 +1,4 @@
-doubletFinder_v3 <- function(seu, PCs, pN = 0.25, pK, nExp, reuse.pANN = FALSE, sct = FALSE, annotations = NULL, workers=2, future.globals.maxSize = 1 * 1024^3) {
+doubletFinder_v3 <- function(seu, PCs, pN = 0.25, pK, nExp, reuse.pANN = FALSE, sct = FALSE, annotations = NULL, workers=2, future.globals.maxSize = 1 * 1024^3, seurat.ncells=3000) {
   require(Seurat); require(fields); require(KernSmooth); require(future); require(parallel);
   
   plan("multicore", workers = workers)
@@ -91,7 +91,7 @@ doubletFinder_v3 <- function(seu, PCs, pN = 0.25, pK, nExp, reuse.pANN = FALSE, 
       seu_wdoublets <- CreateSeuratObject(counts = data_wdoublets)
 
       print("Running SCTransform...")
-      seu_wdoublets <- SCTransform(seu_wdoublets)
+      seu_wdoublets <- SCTransform(seu_wdoublets, ncells=seurat.ncells)
 
       print("Running PCA...")
       seu_wdoublets <- RunPCA(seu_wdoublets, npcs = length(PCs))
