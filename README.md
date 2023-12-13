@@ -1,5 +1,4 @@
-~~ Announcement (11/24/21) ~~
-I'm now a postdoc at Stanford and my UCSF email will be decommissioned soon. I also only check my github repos about once per month, so please reach out directly at cmcginni@stanford[dot]edu if you run into any issues. 
+**This version 2.0.3 modified by Samuele Soraggi includes the possibility of changing the number of cells to use for SCT to speed up computations. Otherwise the software is the same as the original one** 
 
 # DoubletFinder (code written by Chris McGinnis)
 
@@ -9,28 +8,9 @@ DoubletFinder is implemented to interface with Seurat >= 2.0 (https://satijalab.
 
 DoubletFinder was published by Cell Systems in April, 2019: https://www.cell.com/cell-systems/fulltext/S2405-4712(19)30073-0
 
-## Updates
-
-(03/31/2020) Internalized functions normally in 'modes' package to enable compatibility with R v3.6 and highger.
-
-(06/21/2019) Added parallelization to paramSweep_v3 (thanks NathanSkeen!) -- Note: progress no longer updated, but the process is much faster! Fixed bug with smaller datasets. Updated readme.
-
-(04/12/2019) Added SCTransform compatibilities to 'paramSweep_v3' and 'doubletFinder_v3'
-
-(04/08/2019) Added 'PCs' argument to 'doubletFinder', 'doubletFinder_v3', 'paramSweep', and 'paramSweep_v3' to avoid conflicts with dimension reduction preferences. Updated readme.
-
-(01/12/2019) Seurat V3 compatibility: 'doubletFinder_v3' and 'paramSweep_v3' functions added, other functions for parameter estimation remain compatible.  
-
-## DoubletFinder V2.0 (11/28/2018) 
-
-New Features:
-1. Increased computational efficiency during pANN computation
-2. Implemented strategy for determining optimal pK values for any scRNA-seq data using pN-pK parameter sweeps and mean-variance-normalized bimodality coefficient (BCmvn)
-3. Included vignette describing 'best-practices' for applying DoubletFinder to scRNA-seq data generated without sample multiplexing
-
 ## Installation (in R/RStudio)
 
-remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
+remotes::install_github('SamueleSoraggi/DoubletFinder')
 
 ## Dependencies
 
